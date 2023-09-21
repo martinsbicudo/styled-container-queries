@@ -1,6 +1,9 @@
 <div align="center">
 
-<img alt="styled-container-queries" width="200px" src="public/logo.png">
+<img title="styled-container-queries" alt="styled-container-queries" src="https://github.com/martinsbicudo/styled-container-queries/blob/0c232caf216f73caddfe1868fc49e8bd4f1af179/public/logo.png" width="225px">
+
+<br>
+<br>
 
 <a href="https://github.com/mg901/styled-breakpoints/actions?query=workflow%3Arelease">
 <img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/mg901/styled-breakpoints/release.yml?branch=master&style=flat-square">
@@ -18,9 +21,11 @@
 <a href="https://www.npmjs.com/package/styled-breakpoints">
 <img alt="npm version" src="https://img.shields.io/npm/v/styled-breakpoints.svg?style=flat-square">
 </a>
+
+<br>
 <br>
 
-<p>Simple lib to use container queries with <a href="https://styled-components.com/" target="_blank">styled-components</a></p>
+<p>Simple lib to use container queries with <a href="https://styled-components.com" target="_blank">styled-components</a></p>
 </div>
 
 <br>
@@ -29,14 +34,10 @@
 
 Inspired by [styled-breakpoints](https://github.com/mg901/styled-breakpoints)
 
-<br>
-
 # Compatibility
 
 - Styled Components >= `6.0.0`
 - Browsers: [check here](https://caniuse.com/css-container-queries)
-
-<br>
 
 # How to use
 
@@ -71,7 +72,7 @@ const containerTheme = createStyledContainerQueries(breakpoints);
 
 const theme = {
   ...containerTheme,
-  ...theme,
+  ...styledTheme,
 };
 
 export { theme };
@@ -128,17 +129,12 @@ export { Main };
 - [container queries](#container-queries)
   - [min-width](#min-width)
   - [max-width](#max-width)
-  - [exact breakpoint](#single-breakpoint)
+  - [exact breakpoint](#exact-breakpoint)
   - [between breakpoint](#between-breakpoint)
 - [named container](#named-container)
   - [name](#container-name)
   - [context](#container-context)
   - [both](#container-name-and-context)
-- [types](#types)
-  - [IQueriesWithAttrs](#queries-with-attrs-interface)
-  - [IQuery](#query-interface)
-
-<br>
 
 ## Theme structure
 
@@ -186,18 +182,6 @@ const containerTheme = {
 
 ### Inline Size
 
-<details>
-  <summary><strong>Type declaration</strong>
-</summary>
-
-```ts
-declare const inline = IQueriesWithAttrs;
-```
-
-Check `IQueriesWithAttrs` [here](#queries-with-attrs-interface)
-
-</details>
-
 ```tsx
 const Container = styled.div`
   width: 100%;
@@ -223,18 +207,6 @@ container-type: inline-size;
 
 ### Size
 
-<details>
-  <summary><strong>Type declaration</strong>
-</summary>
-
-```ts
-declare const size = IQueriesWithAttrs;
-```
-
-Check `IQueriesWithAttrs` [here](#queries-with-attrs-interface)
-
-</details>
-
 ```tsx
 const Container = styled.div`
   width: 100%;
@@ -256,23 +228,10 @@ container-type: size;
 ```
 
 </details>
-<br>
 
 ## Container queries
 
 ### Min-width
-
-<details>
-  <summary><strong>Type declaration</strong>
-</summary>
-
-```ts
-declare const up = IQuery;
-```
-
-Check `IQuery` [here](#query-interface)
-
-</details>
 
 ```tsx
 const Container = styled.div`
@@ -299,18 +258,6 @@ container-type: inline-size;
 
 ### Max-width
 
-<details>
-  <summary><strong>Type declaration</strong>
-</summary>
-
-```ts
-declare const down = IQuery;
-```
-
-Check `IQuery` [here](#query-interface)
-
-</details>
-
 ```tsx
 const Container = styled.div`
   width: 100%;
@@ -335,18 +282,6 @@ container-type: inline-size;
 <hr/>
 
 ### Exact breakpoint
-
-<details>
-  <summary><strong>Type declaration</strong>
-</summary>
-
-```ts
-declare const only = IQuery;
-```
-
-Check `IQuery` [here](#query-interface)
-
-</details>
 
 ```tsx
 const Container = styled.div`
@@ -385,18 +320,6 @@ container-type: inline-size;
 
 ### Between breakpoint
 
-<details>
-  <summary><strong>Type declaration</strong>
-</summary>
-
-```ts
-declare const between = IQuery;
-```
-
-Check `IQuery` [here](#query-interface)
-
-</details>
-
 ```tsx
 const Container = styled.div`
   width: 100%;
@@ -418,7 +341,6 @@ container-type: inline-size;
 ```
 
 </details>
-<hr/>
 
 ## Named container
 
@@ -609,7 +531,11 @@ const Component = () => (
 
 <details><summary><strong>Result</strong></summary>
 
-<img src="public/example.gif" alt="example"/>
+<img title="container-name-and-context-example" alt="container-name-and-context-example" src="https://github.com/martinsbicudo/styled-container-queries/blob/0c232caf216f73caddfe1868fc49e8bd4f1af179/public/example.gif"/>
 
 </details>
-<hr/>
+<br>
+
+# License
+
+MIT License
