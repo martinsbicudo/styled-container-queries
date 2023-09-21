@@ -1,7 +1,7 @@
 {
   "name": "styled-container-queries",
   "version": "1.0.0-beta.4",
-  "description": "",
+  "description": "Simple lib to use container queries with styled-components",
   "source": "src/index.ts",
   "main": "dist/main.js",
   "types": "dist/types.d.ts",
@@ -12,9 +12,33 @@
     "dev": "parcel watch",
     "build": "parcel build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "license": "MIT",
+  "homepage": "https://github.com/martinsbicudo/styled-container-queries#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/martinsbicudo/styled-container-queries.git"
+  },
+  "bugs": {
+    "url": "https://github.com/martinsbicudo/styled-container-queries/issues"
+  },
+  "author": "Victor Bicudo <victor.mbicudo@gmail.com> (https://github.com/martinsbicudo)",
+  "keywords": [
+    "container",
+    "containers",
+    "query",
+    "container-query",
+    "container-queries",
+    "styled",
+    "react",
+    "javascript",
+    "css-in-js",
+    "css-in-react",
+    "typescript",
+    "styled-container-query",
+    "styled container query",
+    "styled components",
+    "styled-components"
+  ],
   "devDependencies": {
     "@parcel/packager-ts": "^2.9.3",
     "@parcel/transformer-typescript-types": "^2.9.3",
