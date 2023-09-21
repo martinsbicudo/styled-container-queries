@@ -7,13 +7,21 @@ function createStyledContainerQueries(initialBreakpoints: TBreakpoints) {
   const size = createContainerQueries(initialBreakpoints, "size");
   const inline = createContainerQueries(initialBreakpoints, "inline-size");
   const query = createContainerQueries(initialBreakpoints);
-  const attrs = getContainerAttributes;
+  const attrs = {
+    size: (name?: string) => getContainerAttributes("size", name),
+    inline: (name?: string) => getContainerAttributes("inline-size", name),
+  };
 
   return {
-    containers: {
-      size,
-      inline,
-      attrs,
+    container: {
+      size: {
+        ...size,
+        attrs: attrs.size,
+      },
+      inline: {
+        ...inline,
+        attrs: attrs.inline,
+      },
       query,
     },
   };
