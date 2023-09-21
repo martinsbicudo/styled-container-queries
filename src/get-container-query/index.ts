@@ -9,9 +9,9 @@ const getContainerQuery = ({
 
   return `
     container-type: ${type};
-    ${name ? `container-name: ${name}` : ""};
+    ${name ? `container-name: ${name};` : ""}
 
-    @container${context}${size};
+    @container${context}${size}
   `;
 };
 
