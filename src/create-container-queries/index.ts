@@ -1,36 +1,38 @@
-import { getContainerQuery } from "../get-container-query";
+import { getContainer } from "../get-container";
 import { getMaxWidth } from "../get-max-width";
 import { getBreakpoints } from "../get-breakpoints";
 
 import { TContainerType } from "./interface";
 import { TBreakpoints } from "../interface";
-import { TSize, TConfig } from "../get-container-query/interface";
+import { TSize } from "../get-container-query/interface";
+import { TConfig } from "../get-container/interface";
 
 const createContainerQueries = (
-  type: TContainerType,
-  initialBreakpoints: TBreakpoints
+  initialBreakpoints: TBreakpoints,
+  type?: TContainerType
 ) => {
   const { breakpoints, next } = getBreakpoints(initialBreakpoints);
 
   type TQuery = keyof typeof initialBreakpoints;
+  type TConfigQuery = typeof type extends TContainerType ? TConfig : string;
 
-  function up(query: TQuery, config?: TConfig) {
-    return getContainerQuery({
+  function up(query: TQuery, config?: TConfigQuery) {
+    return getContainer({
       type,
       size: `(min-width: ${breakpoints[query]})`,
       config,
     });
   }
 
-  function down(query: TQuery, config?: TConfig) {
-    return getContainerQuery({
+  function down(query: TQuery, config?: TConfigQuery) {
+    return getContainer({
       type,
       size: `(max-width: ${getMaxWidth(breakpoints[query])})`,
       config,
     });
   }
 
-  function only(query: TQuery, config?: TConfig) {
+  function only(query: TQuery, config?: TConfigQuery) {
     const nextQuery = next(query);
     let size: TSize;
 
@@ -40,15 +42,15 @@ const createContainerQueries = (
       )})`;
     else size = `(min-width: ${breakpoints[query]})`;
 
-    return getContainerQuery({
+    return getContainer({
       type,
       size,
       config,
     });
   }
 
-  function between(queries: [TQuery, TQuery], config?: TConfig) {
-    return getContainerQuery({
+  function between(queries: [TQuery, TQuery], config?: TConfigQuery) {
+    return getContainer({
       type,
       size: `(min-width: ${
         breakpoints[queries[0]]

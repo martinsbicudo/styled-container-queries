@@ -1,4 +1,4 @@
-export type TContainerType = "size" | "inline-size" | "normal";
+export type TContainerType = "size" | "inline-size";
 
 export type TContainerName = string;
 

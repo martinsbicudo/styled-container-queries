@@ -1,18 +1,7 @@
-import { IGetContainerParams } from "./interface";
+import { TSize } from "./interface";
 
-const getContainerQuery = ({
-  type,
-  size,
-  config = "",
-}: IGetContainerParams) => {
-  const [name, context = ""] = config.split("|");
-
-  return `
-    container-type: ${type};
-    ${name ? `container-name: ${name};` : ""}
-
-    @container${context}${size}
-  `;
-};
+const getContainerQuery = (size: TSize, context?: string) => `
+  @container${context}${size}
+`;
 
 export { getContainerQuery };
