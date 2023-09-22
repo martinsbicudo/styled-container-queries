@@ -1,7 +1,7 @@
 import { TSize } from "./interface";
 
 const getContainerQuery = (size: TSize, context?: string) => `
-  @container${context}${size}
+  @container${context ? ` ${context} ` : " "}${size}
 `;
 
 export { getContainerQuery };
