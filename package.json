@@ -1,6 +1,6 @@
 {
   "name": "styled-container-queries",
-  "version": "1.0.0-beta.6",
+  "version": "1.0.0-beta.7",
   "description": "Simple lib to use container queries with styled-components",
   "author": "Victor Bicudo <victor.mbicudo@gmail.com> (https://github.com/martinsbicudo)",
   "license": "MIT",
