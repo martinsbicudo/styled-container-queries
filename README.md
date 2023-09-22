@@ -1,6 +1,6 @@
 <div align="center">
 
-<img title="styled-container-queries" alt="styled-container-queries" src="https://github.com/martinsbicudo/styled-container-queries/blob/0c232caf216f73caddfe1868fc49e8bd4f1af179/public/logo.png" width="235px">
+<img title="styled-container-queries" alt="styled-container-queries" src="https://github.com/martinsbicudo/styled-container-queries/blob/0c232caf216f73caddfe1868fc49e8bd4f1af179/public/logo.png" width="225px">
 
 <br>
 <br>
