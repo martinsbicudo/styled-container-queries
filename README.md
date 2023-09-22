@@ -5,25 +5,9 @@
 <br>
 <br>
 
-<a href="https://github.com/mg901/styled-breakpoints/actions?query=workflow%3Arelease">
-<img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/mg901/styled-breakpoints/release.yml?branch=master&style=flat-square">
-</a>
-<a href="https://coveralls.io/github/mg901/styled-breakpoints?branch=master">
-<img alt="coverage status" src="https://img.shields.io/coverallsCoverage/github/mg901/styled-breakpoints?style=flat-square">
-</a>
-<a href="https://bundlephobia.com/package/styled-breakpoints">
-<img alt="npm bundle size" src="https://img.shields.io/bundlephobia/minzip/styled-breakpoints?style=flat-square">
-</a>
-
-<a href="https://img.shields.io/npm/dm/styled-breakpoints?style=flat-square">
-<img alt="npm downloads" src="https://img.shields.io/npm/dm/styled-breakpoints?style=flat-square">
-</a>
-<a href="https://www.npmjs.com/package/styled-breakpoints">
-<img alt="npm version" src="https://img.shields.io/npm/v/styled-breakpoints.svg?style=flat-square">
-</a>
-
-<br>
-<br>
+![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/martinsbicudo/styled-container-queries/pr_build_check.yml)
+![minified size](https://img.shields.io/bundlephobia/min/styled-container-queries)
+![npm](https://img.shields.io/npm/v/styled-container-queries)
 
 <p>Simple lib to use container queries with <a href="https://styled-components.com" target="_blank">styled-components</a></p>
 </div>
