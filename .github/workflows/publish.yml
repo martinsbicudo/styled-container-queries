@@ -5,9 +5,9 @@ on:
       - main
 
 jobs:
-  runs-on: ubuntu-latest
   generate_semver:
     if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
     steps:
       - name: Initializing
         uses: actions/checkout@v3
@@ -43,6 +43,7 @@ jobs:
         run: git push --follow-tags
   publish_package:
     needs: generate_semver
+    runs-on: ubuntu-latest
     steps:
       - name: Initializing
         uses: actions/checkout@v3
@@ -64,6 +65,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
   generate_release:
     needs: [generate_semver, publish_package]
+    runs-on: ubuntu-latest
     steps:
       - name: Get Release Changes
         uses: actions-ecosystem/action-regex-match@v2
