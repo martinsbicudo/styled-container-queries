@@ -1,0 +1,82 @@
+name: Publish 🚀
+on:
+  pull_request:
+    branches:
+      - master
+    types:
+      - merged
+
+jobs:
+  runs-on: ubuntu-latest
+  generate_semver:
+    steps:
+      - name: Initializing
+        uses: actions/checkout@v3
+        with:
+          ref: "master"
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Get semver label
+        id: label
+        uses: zwaldowski/match-label-action@v4
+        with:
+          allowed: semver:major,semver:minor,semver:patch,semver:bypass
+      - name: Get semver
+        id: semver
+        if: ${{ steps.label.outputs.match != 'semver:bypass' }}
+        uses: mad9000/actions-find-and-replace-string@3
+        with:
+          source: ${{ steps.label.outputs.match }}
+          find: "semver:"
+          replace: ""
+      - name: Github configs
+        if: ${{ steps.label.outputs.match != 'semver:bypass' }}
+        run: |
+          git config --global user.email "victor_bicudo@outlook.com"
+          git config --global user.name "martinsbicudo"
+      - name: Npm version
+        id: version
+        if: ${{ steps.label.outputs.match != 'semver:bypass' }}
+        run: |
+          npm version ${{ steps.semver.outputs.value }}
+          echo "value=$(cat package.json | jq -r '.version')" >> $GITHUB_OUTPUT
+      - name: Push version
+        if: ${{ steps.label.outputs.match != 'semver:bypass' }}
+        run: git push --follow-tags
+  publish_package:
+    needs: generate_semver
+    steps:
+      - name: Initializing
+        uses: actions/checkout@v3
+        with:
+          ref: "master"
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16.x"
+          registry-url: "https://registry.npmjs.org"
+      - name: Install dependencies
+        run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      - name: Publish
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+  generate_release:
+    needs: [generate_semver, publish_package]
+    steps:
+      - name: Get Release Changes
+        uses: actions-ecosystem/action-regex-match@v2
+        id: match
+        with:
+          text: ${{ github.event.pull_request.body }}
+          regex: '#+\s*Release\s*\n\`{3}\s*\n([\S\s]*)\n\`{3}\s*\n*'
+          flags: gm
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        with:
+          body: "# Changes\n\n${{ steps.match.outputs.group1 }}"
+          name: v${{ inputs.tag }}
+          tag: v${{ inputs.tag }}
+          token: ${{ secrets.GITHUB_TOKEN }}
