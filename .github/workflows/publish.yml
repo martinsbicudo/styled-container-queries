@@ -4,7 +4,7 @@ on:
     branches:
       - master
     types:
-      - merged
+      - closed
 
 jobs:
   runs-on: ubuntu-latest
