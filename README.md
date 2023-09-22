@@ -28,6 +28,13 @@ Inspired by [styled-breakpoints](https://github.com/mg901/styled-breakpoints)
 - [main](https://htmlpreview.github.io/?https://github.com/martinsbicudo/styled-container-queries/blob/main/parcel-bundle-reports/main.html)
 - [types](https://htmlpreview.github.io/?https://github.com/martinsbicudo/styled-container-queries/blob/main/parcel-bundle-reports/types.html)
 
+# Quick Menu
+
+- [how to use](#how-to-use)
+- [documentation](#documentation)
+- [how to contribute](#how-to-contribute)
+- [license](#license)
+
 # How to use
 
 ### Install
@@ -120,6 +127,8 @@ export { Main };
   - [max-width](#max-width)
   - [exact breakpoint](#exact-breakpoint)
   - [between breakpoint](#between-breakpoint)
+- [only attrs](#only-attrs)
+- [only query](#only-query)
 - [named container](#named-container)
   - [name](#container-name)
   - [context](#container-context)
@@ -331,6 +340,76 @@ container-type: inline-size;
 
 </details>
 
+## Only Attrs
+
+> With this method you get only container attrs
+
+```tsx
+const Container = styled.div`
+  width: 100%;
+
+  ${({ theme }) => theme.container.inline.attrs()}
+`;
+```
+
+```tsx
+const Container = styled.div`
+  width: 100%;
+
+  ${({ theme }) => theme.container.inline.attrs("name")}
+`;
+```
+
+```tsx
+const Container = styled.div`
+  width: 100%;
+
+  ${({ theme }) => theme.container.size.attrs("name")}
+`;
+```
+
+<details><summary><strong>Results</strong></summary>
+
+```css
+container-type: inline-size;
+```
+
+```css
+container-type: inline-size;
+container-name: name;
+```
+
+```css
+container-type: size;
+container-name: name;
+```
+
+</details>
+
+## Only Query
+
+> With this method you get only container queries (`up`, `down`, `only` and `between`)
+
+```tsx
+const Container = styled.div`
+  width: 100%;
+
+  ${({ theme }) => theme.container.query.up("md")} {
+    background-color: red;
+  }
+`;
+```
+
+<details><summary><strong>Result</strong></summary>
+
+```css
+@container (min-width: $MD_SIZE) {
+  background-color: red;
+}
+```
+
+</details>
+
 ## Named container
 
 ### Container name
@@ -524,6 +603,43 @@ const Component = () => (
 
 </details>
 <br>
+
+# How to contribute
+
+To contribute, make sure to follow the steps bellow:
+
+1. Create a new branch:
+
+   ```shell
+    git checkout -b feat/your-new-feature
+   ```
+
+2. Make your changes, add unit tests (with `jest`) and test with `npm link`
+
+   On styled-container-queries project:
+
+   ```shell
+    npm link
+   ```
+
+   On your app/project:
+
+   ```shell
+    npm link styled-container-queries
+   ```
+
+   This will create a symlink into your `node_modules` app, and you can test iteratively. You can check more about npm-link [here](https://docs.npmjs.com/cli/v9/commands/npm-link)
+
+3. Before to push your changes to origin, open your pull request and fill all required fields.
+   1. Make sure to fill the **Release** section with what your pull request changes. **This section is required to merge pull request.**
+4. Set a _required_ `semver` label according to your change:
+   1. `semver:patch`: used when you submit a fix to a bug, enhance performance, etc;
+   2. `semver:minor`: used when you submit a new component, new feature, etc;
+   3. `semver:major`: used when you submit some breaking change, etc;
+   4. `semver:prerelease`: used when you submit a prerelease (ex: `1.0.0-beta.1`);
+   5. `semver:bypass`: used to update docs, or something that doesn’t affect the build.
+
+> Info: Once you have merged your pull request, with all required fields, GitHub Actions will be responsible to create a new build and publish on stage environment.
 
 # License
 
