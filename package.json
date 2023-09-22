@@ -29,7 +29,7 @@
   "size-limit": [
     {
       "path": "dist/bundle.js",
-      "limit": "10 kB"
+      "limit": "5 kB"
     }
   ],
   "repository": {
