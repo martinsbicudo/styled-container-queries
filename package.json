@@ -1,6 +1,6 @@
 {
   "name": "styled-container-queries",
-  "version": "1.0.0-beta.5",
+  "version": "1.0.0-beta.6",
   "description": "Simple lib to use container queries with styled-components",
   "author": "Victor Bicudo <victor.mbicudo@gmail.com> (https://github.com/martinsbicudo)",
   "license": "MIT",
@@ -29,7 +29,7 @@
   "size-limit": [
     {
       "path": "dist/bundle.js",
-      "limit": "10 kB"
+      "limit": "5 kB"
     }
   ],
   "repository": {
