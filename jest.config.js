@@ -4,13 +4,13 @@ const config = {
   collectCoverage: true,
   coverageDirectory: "coverage",
   collectCoverageFrom: ["./src/**"],
-  coverageReporters: ["json-summary"],
+  coverageReporters: ["json-summary", "html"],
   coverageThreshold: {
     global: {
-      branches: 83.33,
-      functions: 52.94,
-      lines: 52.83,
-      statements: 56.14,
+      branches: 100,
+      functions: 82.35,
+      lines: 80.39,
+      statements: 81.81,
     },
   },
 };

@@ -8,11 +8,6 @@ const getContainer = ({ type, size, config = "" }: IGetContainerParams) => {
   const name = values[0];
   const context = values[1];
 
-  if (!type)
-    return `
-      ${getContainerQuery(size, context)}
-    `;
-
   return `
     ${getContainerAttributes(type, name)}
 
