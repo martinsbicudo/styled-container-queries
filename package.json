@@ -5,9 +5,9 @@
   "author": "Victor Bicudo <victor.mbicudo@gmail.com> (https://github.com/martinsbicudo)",
   "license": "MIT",
   "homepage": "https://github.com/martinsbicudo/styled-container-queries#readme",
-  "source": "./src/index.ts",
-  "main": "./dist/main.js",
-  "types": "./dist/types.d.ts",
+  "source": "src/index.ts",
+  "main": "dist/main.js",
+  "types": "dist/types.d.ts",
   "files": [
     "dist"
   ],
@@ -17,12 +17,12 @@
     }
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=18.14.1"
   },
   "scripts": {
     "dev": "parcel watch",
     "build": "parcel build",
-    "size": "size-limit ./dist/main.js",
+    "size": "size-limit dist/main.js",
     "test": "jest src",
     "posttest": "jest-it-up"
   },
