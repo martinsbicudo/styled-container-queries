@@ -114,8 +114,6 @@ const Main = () => (
 export { Main };
 ```
 
-<br>
-
 # Documentation
 
 - [theme structure](#theme-structure)
@@ -602,7 +600,6 @@ const Component = () => (
 <img title="container-name-and-context-example" alt="container-name-and-context-example" src="https://github.com/martinsbicudo/styled-container-queries/blob/0c232caf216f73caddfe1868fc49e8bd4f1af179/public/example.gif"/>
 
 </details>
-<br>
 
 # How to contribute
 
