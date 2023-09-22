@@ -544,4 +544,3 @@ const Component = () => (
 # License
 
 MIT License
-
