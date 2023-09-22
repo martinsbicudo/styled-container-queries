@@ -39,6 +39,11 @@ Inspired by [styled-breakpoints](https://github.com/mg901/styled-breakpoints)
 - Styled Components >= `6.0.0`
 - Browsers: [check here](https://caniuse.com/css-container-queries)
 
+# Bundle Analyzer
+
+- [main](https://htmlpreview.github.io/?https://github.com/martinsbicudo/styled-container-queries/blob/main/parcel-bundle-reports/main.html)
+- [types](https://htmlpreview.github.io/?https://github.com/martinsbicudo/styled-container-queries/blob/main/parcel-bundle-reports/types.html)
+
 # How to use
 
 ### Install
