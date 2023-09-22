@@ -22,7 +22,7 @@ env:
 
 jobs:
   release_section:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Get release section
         uses: actions-ecosystem/action-regex-match@v2
