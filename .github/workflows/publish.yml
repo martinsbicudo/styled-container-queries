@@ -18,7 +18,7 @@ jobs:
         id: label
         uses: zwaldowski/match-label-action@v4
         with:
-          allowed: semver:major,semver:minor,semver:patch,semver:bypass
+          allowed: semver:major,semver:minor,semver:patch,semver:prerelease,semver:bypass
       - name: Get semver
         id: semver
         if: ${{ steps.label.outputs.match != 'semver:bypass' }}
