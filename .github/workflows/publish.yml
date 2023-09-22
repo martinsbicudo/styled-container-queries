@@ -82,6 +82,6 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           body: "# Changes\n\n${{ steps.match.outputs.group1 }}"
-          name: v${{ needs.generate_semver.outputs.value }}
-          tag: v${{ needs.generate_semver.outputs.value }}
+          name: v${{ needs.generate_semver.outputs.version }}
+          tag: v${{ needs.generate_semver.outputs.version }}
           token: ${{ secrets.AUTH_GITHUB_TOKEN }}
