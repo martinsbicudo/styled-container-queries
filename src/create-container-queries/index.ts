@@ -1,20 +1,26 @@
 import { getContainer } from "../get-container";
 import { getMaxWidth } from "../get-max-width";
 import { getBreakpoints } from "../get-breakpoints";
+import { getContainerAttributes } from "../get-container-attributes";
 
 import { TContainerType } from "./interface";
 import { TBreakpoints } from "../interface";
 import { TSize } from "../get-container-query/interface";
 import { TConfig } from "../get-container/interface";
 
-const createContainerQueries = (
+type TContainerQueryType<T> = T extends TContainerType
+  ? TContainerType
+  : undefined;
+
+function createContainerQueries<T>(
   initialBreakpoints: TBreakpoints,
-  type?: TContainerType
-) => {
+  type?: TContainerQueryType<T>
+) {
   const { breakpoints, next } = getBreakpoints(initialBreakpoints);
 
   type TQuery = keyof typeof initialBreakpoints;
-  type TConfigQuery = typeof type extends TContainerType ? TConfig : string;
+  type TConfigQuery = T extends TContainerType ? TConfig : string;
+  type TAttrsName = T extends TContainerType ? [string?] : [string];
 
   function up(query: TQuery, config?: TConfigQuery) {
     return getContainer({
@@ -64,7 +70,8 @@ const createContainerQueries = (
     down,
     only,
     between,
+    attrs: (...name: TAttrsName) => getContainerAttributes(type, name?.[0]),
   };
-};
+}
 
 export { createContainerQueries };

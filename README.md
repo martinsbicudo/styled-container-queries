@@ -120,13 +120,15 @@ export { Main };
 - [container types](#container-types)
   - [inline-size](#inline-size)
   - [size](#size)
+  - [normal](#normal)
+  - [query without type](#query-without-type)
 - [container queries](#container-queries)
   - [min-width](#min-width)
   - [max-width](#max-width)
   - [exact breakpoint](#exact-breakpoint)
   - [between breakpoint](#between-breakpoint)
-- [only attrs](#only-attrs)
-- [only query](#only-query)
+- [only-attrs](#only-attrs)
+- [only-query](#only-query)
 - [named container](#named-container)
   - [name](#container-name)
   - [context](#container-context)
@@ -164,12 +166,21 @@ const containerTheme = {
     between,
     attrs,
   },
-  //return only query without `container-type` and `container-name`
+  //return query and container-type: normal
+  normal: {
+    up,
+    down,
+    only,
+    between,
+    attrs,
+  },
+  //return only query without `container-type`
   query: {
     up,
     down,
     only,
     between,
+    attrs,
   },
 };
 ```
@@ -218,6 +229,54 @@ const Container = styled.div`
 ```css
 container-type: size;
 
+@container (min-width: $MD_SIZE) {
+  background-color: red;
+}
+```
+
+</details>
+<hr/>
+
+### Normal
+
+```tsx
+const Container = styled.div`
+  width: 100%;
+
+  ${({ theme }) => theme.container.normal.up("md")} {
+    background-color: red;
+  }
+`;
+```
+
+<details><summary><strong>Result</strong></summary>
+
+```css
+container-type: normal;
+
+@container (min-width: $MD_SIZE) {
+  background-color: red;
+}
+```
+
+</details>
+<hr/>
+
+### Query without type
+
+```tsx
+const Container = styled.div`
+  width: 100%;
+
+  ${({ theme }) => theme.container.query.up("md")} {
+    background-color: red;
+  }
+`;
+```
+
+<details><summary><strong>Result</strong></summary>
+
+```css
 @container (min-width: $MD_SIZE) {
   background-color: red;
 }
@@ -354,6 +413,14 @@ const Container = styled.div`
 const Container = styled.div`
   width: 100%;
 
+  ${({ theme }) => theme.container.size.attrs()}
+`;
+```
+
+```tsx
+const Container = styled.div`
+  width: 100%;
+
   ${({ theme }) => theme.container.inline.attrs("name")}
 `;
 ```
@@ -366,10 +433,22 @@ const Container = styled.div`
 `;
 ```
 
+```tsx
+const Container = styled.div`
+  width: 100%;
+
+  ${({ theme }) => theme.container.query.attrs("name")}
+`;
+```
+
 <details><summary><strong>Results</strong></summary>
 
 ```css
 container-type: inline-size;
+```
+
+```css
+container-type: size;
 ```
 
 ```css
@@ -382,11 +461,17 @@ container-type: size;
 container-name: name;
 ```
 
+```css
+container-name: name;
+```
+
 </details>
 
 ## Only Query
 
-> With this method you get only container queries (`up`, `down`, `only` and `between`)
+> With this method you get queries without type (ex: `up`, `down`, `only` and `between`)
+
+> `Attrs` method also can be used)
 
 ```tsx
 const Container = styled.div`
