@@ -1,27 +1,28 @@
 import { createContainerQueries } from "./create-container-queries";
-import { getContainerAttributes } from "./get-container-attributes";
+import { TContainerType } from "./create-container-queries/interface";
 
 import { TBreakpoints } from "./interface";
 
 function createStyledContainerQueries(initialBreakpoints: TBreakpoints) {
-  const size = createContainerQueries(initialBreakpoints, "size");
-  const inline = createContainerQueries(initialBreakpoints, "inline-size");
+  const size = createContainerQueries<TContainerType>(
+    initialBreakpoints,
+    "size"
+  );
+  const inline = createContainerQueries<TContainerType>(
+    initialBreakpoints,
+    "inline-size"
+  );
+  const normal = createContainerQueries<TContainerType>(
+    initialBreakpoints,
+    "normal"
+  );
   const query = createContainerQueries(initialBreakpoints);
-  const attrs = {
-    size: (name?: string) => getContainerAttributes("size", name),
-    inline: (name?: string) => getContainerAttributes("inline-size", name),
-  };
 
   return {
     container: {
-      size: {
-        ...size,
-        attrs: attrs.size,
-      },
-      inline: {
-        ...inline,
-        attrs: attrs.inline,
-      },
+      size,
+      inline,
+      normal,
       query,
     },
   };

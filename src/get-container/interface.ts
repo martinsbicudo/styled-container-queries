@@ -7,8 +7,8 @@ import { TSize } from "../get-container-query/interface";
 
 export type TConfig =
   | `${TContainerName}`
-  | `${TContainerName}|${TContainerContext}`
-  | `|${TContainerContext}`;
+  | `${TContainerName}.${TContainerContext}`
+  | `.${TContainerContext}`;
 
 export interface IGetContainerParams {
   type?: TContainerType;

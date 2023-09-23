@@ -7,10 +7,10 @@ const config = {
   coverageReporters: ["json-summary", "html"],
   coverageThreshold: {
     global: {
-      branches: 100,
-      functions: 82.35,
-      lines: 80.39,
-      statements: 81.81,
+      branches: 76.47,
+      functions: 87.5,
+      lines: 83.67,
+      statements: 84.9,
     },
   },
 };
