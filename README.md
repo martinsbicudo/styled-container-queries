@@ -96,6 +96,21 @@ export const Container = styled.div`
 `;
 ```
 
+`styled.d.ts`
+
+> This is the current way to solve types
+
+```tsx
+import "styled-components";
+import { theme } from "./theme";
+
+declare module "styled-components" {
+  export interface DefaultTheme {
+    container: typeof theme.container;
+  }
+}
+```
+
 `main.tsx`
 
 ```tsx
