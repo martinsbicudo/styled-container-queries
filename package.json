@@ -22,6 +22,7 @@
   "scripts": {
     "dev": "parcel watch",
     "build": "parcel build",
+    "prepublishOnly": "npm run build",
     "size": "size-limit dist/main.js",
     "test": "jest src",
     "posttest": "jest-it-up"
